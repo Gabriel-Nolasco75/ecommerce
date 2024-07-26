@@ -13,6 +13,13 @@
             'route' => route('admin.families.index'),
             'active' => request()->routeIs('admin.families.*'),
         ],
+        [   
+            // Categoria de productos
+            'name' => 'Categorias',
+            'icon' => 'fa-solid fa-tags',
+            'route' => route('admin.categories.index'),
+            'active' => request()->routeIs('admin.categories.*'),
+        ],
     ];
 @endphp
 

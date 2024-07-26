@@ -18,6 +18,8 @@
 
             @csrf
             
+            <x-validation-errors class="mb-4"/>
+            
             <div class="mb-4">
                 <x-label class="mb-2">
                     Nombre
