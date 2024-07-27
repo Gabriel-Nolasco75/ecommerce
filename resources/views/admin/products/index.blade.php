@@ -4,18 +4,18 @@
         'route' => route('admin.dashboard'),
     ],
     [
-        'name' => 'Subcategorías',
+        'name' => 'Productos',
     ],
 ]">
 
     <x-slot name="action">
-        <a class="btn btn-blue" href="{{route('admin.subcategories.create')}}">
+        <a class="btn btn-blue" href="{{ route('admin.products.create') }}">
             Nuevo
         </a>
     </x-slot>
 
-    @if ($subcategories->count())
-        
+    @if ($products->count())
+
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -24,13 +24,13 @@
                             ID
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            SKU
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Categoría
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Familia
+                            Precio
                         </th>
                         <th scope="col" class="px-6 py-3">
 
@@ -38,23 +38,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subcategories as $subcategory)
+                    @foreach ($products as $product)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $subcategory->id }}
+                                {{ $product->id }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $subcategory->name }}
+                                {{ $product->sku }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $subcategory->category->name }}
+                                {{ $product->name }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $subcategory->category->family->name }}
+                                {{ $product->price }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.subcategories.edit', $subcategory) }}">
+                                <a href="{{ route('admin.products.edit', $product) }}">
                                     Editar
                                 </a>
                             </td>
@@ -66,11 +66,11 @@
         </div>
 
         <div class="mt-4">
-            {{ $subcategories->links() }}
+            {{ $products->links() }}
         </div>
     @else
         <div class="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-        role="alert">
+            role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -78,8 +78,9 @@
             </svg>
             <span class="sr-only">Alerta</span>
             <div>
-                <span class="font-medium">Alerta de informacion!</span> Todavía no hay sub categorías registradas.
+                <span class="font-medium">Alerta de informacion!</span> Todavía no hay productos registrados.
             </div>
         </div>
     @endif
+
 </x-admin-layout>
