@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Database\Seeders\FamilySeeder;
+use Database\Seeders\OptionSeeder;
 use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
@@ -27,7 +29,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            FamilySeeder::class
+            FamilySeeder::class,
+            OptionSeeder::class,
         ]);
 
         Product::factory(150)->create();

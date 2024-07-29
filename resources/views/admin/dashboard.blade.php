@@ -6,7 +6,7 @@
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="card">
             <div class="flex items-center">
                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
 
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg p-6 flex items-center justify-center">
+        <div class="card rounded-lg shadow-lg p-6 flex items-center justify-center">
 
             <h2 class="text-xl font-semibold">
                 Panthera
