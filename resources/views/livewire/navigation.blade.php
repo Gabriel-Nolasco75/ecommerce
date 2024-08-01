@@ -23,7 +23,7 @@
                 </h1>
 
                 <div class="flex-1 hidden md:block">
-                    <x-input class="w-full" placeholder="Buscar por producto, tienda o marca" />
+                    <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, tienda o marca" />
                 </div>
 
                 <div class="flex items-center space-x-4 md:space-x-8">
@@ -97,7 +97,7 @@
             </div>
 
             <div class="mt-4 md:hidden">
-                <x-input class="w-full" placeholder="Buscar por producto, tienda o marca" />
+                <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, tienda o marca" />
             </div>
         </x-container>
 
@@ -109,13 +109,13 @@
 
             <div class="flex">
 
-                <div class="w-screen md:w-80 h-screen bg-white">
+                <div class="w-screen md:w-80 h-90 bg-gray-600">
 
                     <div class="bg-purple-600 px-4 py-[23px] text-white font-semibold">
                         
                         <div class="flex justify-between items-center">
                             <span class="text-lg">
-                                hallo
+                                Menu
                             </span>
 
                             <button x-on:click="open = false">
@@ -132,8 +132,9 @@
                             @foreach ($families as $family)
                                 
                                 <li wire:mouseover="$set('family_id', {{$family->id}})">
-                                    <a href=""
-                                        class="flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-purple-200">
+                                    <a href="{{route('families.show', $family)}}"
+                                        class="flex items-center justify-between px-4 py-4 text-gray-300 hover:bg-purple-300 hover:text-gray-700
+                                        mb-4">
                                         {{ $family->name }}
 
                                         <i class="fa-solid fa-angle-right"></i>
@@ -151,15 +152,15 @@
 
                 <div class="w-80 xl:w-[57rem] pt-[74px] hidden md:block">
 
-                    <div class="bg-white h-[calc(100vh-52px)] overflow-auto px-6 py-8">
+                    <div class="bg-gray-600 h-[calc(100vh-52px)] overflow-auto px-6 py-8">
                         
                         <div class="mb-8 flex justify-between items-center">
 
-                            <p class="border-b-[3px] border-lime-400 uppercase text-xl font-semibold pb-1">
+                            <p class="border-b-[3px] border-lime-400 uppercase text-xl font-semibold pb-1 text-gray-300">
                                 {{$this->familyName}}
                             </p>
 
-                            <a href="" class="btn btn-purple">
+                            <a href="{{route('families.show', $family_id)}}" class="btn btn-purple">
                                 Ver todo
                             </a>
 
@@ -170,7 +171,7 @@
                                 
                                 <li>
 
-                                    <a href="" class="text-purple-600 font-semibold text-lg">
+                                    <a href="{{route('categories.show', $category)}}" class="text-purple-900 font-semibold text-lg">
                                         {{ $category->name }}
                                     </a>
 
@@ -179,7 +180,7 @@
                                         @foreach ($category->subcategories as $subcategory)
                                             
                                             <li>
-                                               <a href="" class="text-sm text-gray-700 hover:text-purple-600">
+                                               <a href="{{route('subcategories.show', $subcategory)}}" class="text-sm text-gray-300 hover:text-purple-300">
                                                     {{$subcategory->name}}
                                                 </a> 
                                             </li>
@@ -201,4 +202,17 @@
         </div>
 
     </div>
+
+    @push('js')
+
+        <script>
+            function search(value) {
+                Livewire.dispatch('search', {
+                    search: value
+                })
+            }
+        </script>
+
+    @endpush
+
 </div>
