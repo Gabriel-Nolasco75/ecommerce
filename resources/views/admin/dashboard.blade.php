@@ -11,14 +11,14 @@
                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
 
                 <div class="ml-4 flex-1">
-                    <h2 class="text-lg font-semibold">
+                    <h2 class="text-lg font-semibold text-gray-300">
                         Bienvenido, {{ auth()->user()->name }}
                     </h2>
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
 
-                        <button class="text-sm hover:text-blue-500">
+                        <button class="text-sm text-gray-300 hover:text-blue-500 ">
                             Cerrar sesión
                         </button>
                     </form>
@@ -28,7 +28,7 @@
 
         <div class="card rounded-lg shadow-lg p-6 flex items-center justify-center">
 
-            <h2 class="text-xl font-semibold">
+            <h2 class="text-xl font-semibold text-gray-300">
                 Panthera
             </h2>
 
