@@ -19,7 +19,7 @@ class WelcomeController extends Controller
                         ->get();
 
         $lastProducts = Product::orderBy('created_at', 'desc')
-                ->take(12)
+                ->take(6)
                 ->get();
 
         return view('Welcome', compact('covers', 'lastProducts'));
